@@ -4,6 +4,7 @@ use near_sdk::{env, near_bindgen};
 #[near_bindgen]
 #[derive(Default, BorshDeserialize, BorshSerialize)]
 pub struct FidanBagis {
+    donation: Donation,
     vector_of_donations: Vec<Donation>,
 }
 
@@ -17,12 +18,12 @@ pub struct Donation {
 
 #[near_bindgen]
 impl FidanBagis {
-    pub fn get_donation(&mut self, _index: usize) -> Donation {
-        return self.vector_of_donations[_index];
+    pub fn get_donation(&mut self, _index: usize) -> &Donation {
+        return &self.vector_of_donations[_index];
     }
 
-    pub fn get_vector_of_donations(&mut self) -> Vec<Donation> {
-        return self.vector_of_donations;
+    pub fn get_vector_of_donations(&mut self) -> &Vec<Donation> {
+        return &self.vector_of_donations;
     }
 
     pub fn deposit_donation(&mut self, _donator: u32, _amount: u32, _location: u32) {

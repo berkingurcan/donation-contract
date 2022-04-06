@@ -10,9 +10,9 @@ pub struct FidanBagis {
 
 #[derive(Default, BorshDeserialize, BorshSerialize)]
 pub struct Donation {
-    donator_id: u32,
+    donator: String,
     amount: u32,
-    location_id: u32,
+    location: String,
 }
 
 
@@ -26,11 +26,11 @@ impl FidanBagis {
         return &self.vector_of_donations;
     }
 
-    pub fn deposit_donation(&mut self, _donator: u32, _amount: u32, _location: u32) {
+    pub fn deposit_donation(&mut self, _donator: String, _amount: u32, _location: String) {
         let new_donation = Donation {
-            donator_id: _donator,
+            donator: _donator,
             amount: _amount,
-            location_id: _location
+            location: _location
         };
 
         self.vector_of_donations.push(new_donation);

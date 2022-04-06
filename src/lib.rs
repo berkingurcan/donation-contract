@@ -18,10 +18,11 @@ pub struct Donation {
 
 #[near_bindgen]
 impl FidanBagis {
+    #[result_serializer(borsh)]
     pub fn get_donation(&mut self, _index: usize) -> &Donation {
         return &self.vector_of_donations[_index];
     }
-
+    #[result_serializer(borsh)]
     pub fn get_vector_of_donations(&mut self) -> &Vec<Donation> {
         return &self.vector_of_donations;
     }
